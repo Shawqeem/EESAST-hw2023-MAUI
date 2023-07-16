@@ -20,7 +20,7 @@
 
 GitHub 提交
 
-- fork 仓库：fork 仓库：https://github.com/Shawqeem/EESAST-hw2023-MAUI-calculator 到个人仓库，按要求修改好后，从个人仓库提pr到原本的仓库，pr信息填写为：`calculator_姓名_班级` （如：`calculator_神様_无20`）。
+- fork 仓库：https://github.com/Shawqeem/EESAST-hw2023-MAUI-calculator 到个人仓库，按要求修改好后，从个人仓库提pr到原本的仓库，pr信息填写为：`calculator_姓名_班级` （如：`calculator_神様_无20`）。
 ## 截止日期
 
 由yxgg决定
