@@ -86,6 +86,7 @@ public partial class MainPage : ContentPage
                 lastButton = ButtonType.UNARY;
                 break;
             default:
+                lastButton = ButtonType.OPERATOR;// 别忘了更新啊！！少了这一句直接导致要求2不满足了，同时DEL的部分判断也受了影响。
                 break;
         }
 
@@ -161,7 +162,7 @@ public partial class MainPage : ContentPage
         {
             displayLabel.Text = "0";
             isResult = false;
-        }
+        }// 按照原始要求，当上一个为等号就要清屏并且存值。不过你这样设计也是一种trick，当!isResult时，数据停留在屏幕上既“存”了，也能改。很不错！
         else if (lastButton == ButtonType.NUMBER)
         {
             // 否则，就删除最后一个字符，并更新当前输入的数字
