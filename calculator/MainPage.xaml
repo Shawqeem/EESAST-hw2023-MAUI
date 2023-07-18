@@ -5,13 +5,21 @@
              Title="Calculator">
 
     <Grid>
-        
+
+      <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="100"
+                Margin="15"
+                HorizontalOptions="Start" 
+                VerticalOptions="Start"/>
+
         <!-- 使用Grid作为根布局 -->
         <Grid x:Name="standard" RowSpacing="8" ColumnSpacing="8" Margin="8">
         
             <!-- 设置六行四列的网格 -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="3*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -27,7 +35,7 @@
             </Grid.ColumnDefinitions>
         
             <!-- 使用Label显示计算结果，并占据第一行四列 -->
-            <Label x:Name="displayLabel" Text="0" FontSize="Large" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="4" />
+            <Label x:Name="displayLabel" Text="0" FontSize="Large" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="4" />
 
             <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
             <Button Text="⇌" Background="{AppThemeBinding Light=Indigo, Dark=Orange}" FontSize="Large" Clicked="OnSwitchClicked" Grid.Row="1" Grid.Column="0"/>
@@ -57,11 +65,11 @@
         </Grid>
 
         <!-- 使用Grid作为根布局 -->
-        <Grid x:Name="scientific" RowSpacing="4" ColumnSpacing="4" Margin="4" IsVisible="false">
+        <Grid x:Name="scientific" RowSpacing="4" ColumnSpacing="4" Margin="8" IsVisible="false">
 
             <!-- 设置七行五列的网格 -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="3.5*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -79,7 +87,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- 使用Label显示计算结果，并占据第一行五列 -->
-            <Label x:Name="displayLabel_sci" FontSize="Large" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="5" BindingContext="{x:Reference displayLabel}" Text="{Binding Text}"/>
+            <Label x:Name="displayLabel_sci" FontSize="Large" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="5" BindingContext="{x:Reference displayLabel}" Text="{Binding Text}"/>
 
             <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
             <Button Text="^" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="0"/>
