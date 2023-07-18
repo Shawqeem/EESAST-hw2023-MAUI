@@ -91,28 +91,28 @@
 
             <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
             <Button Text="^" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="0"/>
-            <Button Text="lg" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="1"/>
-            <Button Text="ln" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="2"/>
-            <Button Text="√" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="3"/>
-            <Button Text="!" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="4"/>
+            <Button Text="lg" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="1" Grid.Column="1"/>
+            <Button Text="ln" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="1" Grid.Column="2"/>
+            <Button Text="√" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="1" Grid.Column="3"/>
+            <Button Text="!" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="1" Grid.Column="4"/>
 
             <Button Text="⇌" Background="{AppThemeBinding Light=Indigo, Dark=Orange}" FontSize="Large" Clicked="OnSwitchClicked" Grid.Row="2" Grid.Column="0"/>
             <Button Text="AC" Background="Red" FontSize="Large" Clicked="OnClearClicked" Grid.Row="2" Grid.Column="1"/>
             <Button Text="DEL" Background="Red" FontSize="Large" Clicked="OnDeleteClicked" Grid.Row="2" Grid.Column="2"/>
             <Button Text="/" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="3"/>
-            <Button Text="sin" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="4"/>
+            <Button Text="sin" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="2" Grid.Column="4"/>
 
             <Button Text="7" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="0"/>
             <Button Text="8" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="1"/>
             <Button Text="9" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="2"/>
             <Button Text="*" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="3"/>
-            <Button Text="cos" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="4"/>
+            <Button Text="cos" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="3" Grid.Column="4"/>
 
             <Button Text="4" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="0"/>
             <Button Text="5" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="1"/>
             <Button Text="6" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="2"/>
             <Button Text="-" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="3"/>
-            <Button Text="tan" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="4"/>
+            <Button Text="tan" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="4" Grid.Column="4"/>
 
             <Button Text="1" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="0"/>
             <Button Text="2" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="1"/>

@@ -26,7 +26,6 @@ public partial class MainPage : ContentPage
     private string currentOperator = "";
     private bool isResult = false;
     private ButtonType lastButton = ButtonType.DEFAULT;
-    public bool isAdvancedMode = false;
 
     // 定义OnNumberClicked方法来处理数字按钮点击事件
     private void OnNumberClicked(object sender, EventArgs e)
@@ -74,26 +73,10 @@ public partial class MainPage : ContentPage
         var button = sender as Button;
         var op = button.Text;
 
-        switch (op)
-        {
-            case "lg":
-            case "ln":
-            case "√":
-            case "!":
-            case "sin":
-            case "cos":
-            case "tan":
-                lastButton = ButtonType.UNARY;
-                break;
-            default:
-                lastButton = ButtonType.OPERATOR;// 别忘了更新啊！！少了这一句直接导致要求2不满足了，同时DEL的部分判断也受了影响。
-                break;
-        }
-
         // 如果当前的运算符不为空，就执行上一次选择的运算，并显示结果
         if (currentOperator != "")
         {
-            if (lastButton == ButtonType.NUMBER || lastButton == ButtonType.UNARY)
+            if (lastButton == ButtonType.NUMBER)
             {
                 Calculate();
                 displayLabel.Text = lastNumber.ToString();
@@ -108,23 +91,53 @@ public partial class MainPage : ContentPage
         {
             // 否则，就将当前输入的数字赋值给上一次计算的结果
             lastNumber = currentNumber;
-            if (lastButton == ButtonType.UNARY)
-            {
-                currentOperator = op;
-                Calculate();
-                displayLabel.Text = lastNumber.ToString();
-                isResult = true;
-            }
-            else
-            {
-                displayLabel.Text = "0";
-                isResult = false;
-            }
+
+            displayLabel.Text = "0";
+            isResult = false;
         }
 
         // 将当前选择的运算符赋值给变量，并清空当前输入的数字
         currentOperator = op;
 
+        lastButton = ButtonType.OPERATOR;
+    }
+
+    //  定义OnUnaryClicked方法来处理一元运算符按钮点击事件
+    private void OnUnaryClicked(object sender, EventArgs e)
+    {
+        // 获取按钮的文本值
+        var button = sender as Button;
+        var op = button.Text;
+
+        switch (op)
+        {
+            case "lg":
+                currentNumber = Math.Log10(currentNumber);
+                break;
+            case "ln":
+                currentNumber = Math.Log(currentNumber);
+                break;
+            case "√":
+                currentNumber = Math.Sqrt(currentNumber);
+                break;
+            case "!":
+                currentNumber = Factorial((int)currentNumber);
+                break;
+            case "sin":
+                currentNumber = Math.Sin(currentNumber);
+                break;
+            case "cos":
+                currentNumber = Math.Cos(currentNumber);
+                break;
+            case "tan":
+                currentNumber = Math.Tan(currentNumber);
+                break;
+            default:
+                break;
+        }
+
+        displayLabel.Text = currentNumber.ToString();
+        lastButton = ButtonType.UNARY;
     }
 
     // 定义OnEqualClicked方法来处理等号按钮点击事件
@@ -210,30 +223,6 @@ public partial class MainPage : ContentPage
                 break;
             case "/":
                 lastNumber /= currentNumber;
-                break;
-            case "^":
-                lastNumber = Math.Pow(lastNumber, currentNumber);
-                break;
-            case "lg":
-                lastNumber = Math.Log10(lastNumber);
-                break;
-            case "ln":
-                lastNumber = Math.Log(lastNumber);
-                break;
-            case "√":
-                lastNumber = Math.Sqrt(lastNumber);
-                break;
-            case "!":
-                lastNumber = Factorial((int)lastNumber);
-                break;
-            case "sin":
-                lastNumber = Math.Sin(lastNumber);
-                break;
-            case "cos":
-                lastNumber = Math.Cos(lastNumber);
-                break;
-            case "tan":
-                lastNumber = Math.Tan(lastNumber);
                 break;
             default:
                 break;
