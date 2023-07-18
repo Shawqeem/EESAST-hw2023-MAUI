@@ -7,7 +7,7 @@
     <Grid>
         
         <!-- 使用Grid作为根布局 -->
-        <Grid x:Name="standard" RowSpacing="1" ColumnSpacing="1" Margin="1" Background="LightGray">
+        <Grid x:Name="standard" RowSpacing="8" ColumnSpacing="8" Margin="8">
         
             <!-- 设置六行四列的网格 -->
             <Grid.RowDefinitions>
@@ -27,37 +27,37 @@
             </Grid.ColumnDefinitions>
         
             <!-- 使用Label显示计算结果，并占据第一行四列 -->
-            <Label x:Name="displayLabel" Text="0" Background="White" FontSize="Large" HorizontalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="4" />
+            <Label x:Name="displayLabel" Text="0" FontSize="Large" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="4" />
 
             <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
-            <Button Text="⇌" Background="Indigo" FontSize="Large" Clicked="OnSwitchClicked" CornerRadius="0" Grid.Row="1" Grid.Column="0"/>
-            <Button Text="AC" Background="Gray" FontSize="Large" Clicked="OnClearClicked" CornerRadius="0" Grid.Row="1" Grid.Column="1"/>
-            <Button Text="DEL" Background="Gray" FontSize="Large" Clicked="OnDeleteClicked" CornerRadius="0" Grid.Row="1" Grid.Column="2"/>
-            <Button Text="/" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="1" Grid.Column="3"/>
+            <Button Text="⇌" Background="{AppThemeBinding Light=Indigo, Dark=Orange}" FontSize="Large" Clicked="OnSwitchClicked" Grid.Row="1" Grid.Column="0"/>
+            <Button Text="AC" Background="Red" FontSize="Large" Clicked="OnClearClicked" Grid.Row="1" Grid.Column="1"/>
+            <Button Text="DEL" Background="Red" FontSize="Large" Clicked="OnDeleteClicked" Grid.Row="1" Grid.Column="2"/>
+            <Button Text="/" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="3"/>
 
-            <Button Text="7" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="2" Grid.Column="0"/>
-            <Button Text="8" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="2" Grid.Column="1"/>
-            <Button Text="9" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="2" Grid.Column="2"/>
-            <Button Text="*" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="2" Grid.Column="3"/>
+            <Button Text="7" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="0"/>
+            <Button Text="8" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="1"/>
+            <Button Text="9" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="2"/>
+            <Button Text="*" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="3"/>
 
-            <Button Text="4" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="3" Grid.Column="0"/>
-            <Button Text="5" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="3" Grid.Column="1"/>
-            <Button Text="6" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="3" Grid.Column="2"/>
-            <Button Text="-" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="3" Grid.Column="3"/>
+            <Button Text="4" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="0"/>
+            <Button Text="5" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="1"/>
+            <Button Text="6" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="2"/>
+            <Button Text="-" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="3"/>
 
-            <Button Text="1" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="4" Grid.Column="0"/>
-            <Button Text="2" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="4" Grid.Column="1"/>
-            <Button Text="3" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="4" Grid.Column="2"/>
-            <Button Text="+" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="4" Grid.Column="3"/>
+            <Button Text="1" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="0"/>
+            <Button Text="2" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="1"/>
+            <Button Text="3" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="2"/>
+            <Button Text="+" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="3"/>
 
-            <Button Text="0" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <Button Text="." Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="5" Grid.Column="2"/>
-            <Button Text="=" Background="Purple" FontSize="Large" Clicked="OnEqualClicked" CornerRadius="0" Grid.Row="5" Grid.Column="3"/>
+            <Button Text="0" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Text="." Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="2"/>
+            <Button Text="=" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnEqualClicked" Grid.Row="5" Grid.Column="3"/>
 
         </Grid>
 
         <!-- 使用Grid作为根布局 -->
-        <Grid x:Name="scientific" ColumnSpacing="1" Margin="1" Background="LightGray" IsVisible="false">
+        <Grid x:Name="scientific" RowSpacing="4" ColumnSpacing="4" Margin="4" IsVisible="false">
 
             <!-- 设置七行五列的网格 -->
             <Grid.RowDefinitions>
@@ -79,43 +79,43 @@
             </Grid.ColumnDefinitions>
 
             <!-- 使用Label显示计算结果，并占据第一行五列 -->
-            <Label x:Name="displayLabel_sci" Background="White" FontSize="Large" HorizontalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="5" BindingContext="{x:Reference displayLabel}" Text="{Binding Text}"/>
+            <Label x:Name="displayLabel_sci" FontSize="Large" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="5" BindingContext="{x:Reference displayLabel}" Text="{Binding Text}"/>
 
             <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
-            <Button Text="^" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="1" Grid.Column="0"/>
-            <Button Text="lg" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="1" Grid.Column="1"/>
-            <Button Text="ln" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="1" Grid.Column="2"/>
-            <Button Text="√" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="1" Grid.Column="3"/>
-            <Button Text="!" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="1" Grid.Column="4"/>
+            <Button Text="^" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="0"/>
+            <Button Text="lg" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="1"/>
+            <Button Text="ln" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="2"/>
+            <Button Text="√" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="3"/>
+            <Button Text="!" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="4"/>
 
-            <Button Text="⇌" Background="Indigo" FontSize="Large" Clicked="OnSwitchClicked" CornerRadius="0" Grid.Row="2" Grid.Column="0"/>
-            <Button Text="AC" Background="Gray" FontSize="Large" Clicked="OnClearClicked" CornerRadius="0" Grid.Row="2" Grid.Column="1"/>
-            <Button Text="DEL" Background="Gray" FontSize="Large" Clicked="OnDeleteClicked" CornerRadius="0" Grid.Row="2" Grid.Column="2"/>
-            <Button Text="/" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="2" Grid.Column="3"/>
-            <Button Text="sin" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="2" Grid.Column="4"/>
+            <Button Text="⇌" Background="{AppThemeBinding Light=Indigo, Dark=Orange}" FontSize="Large" Clicked="OnSwitchClicked" Grid.Row="2" Grid.Column="0"/>
+            <Button Text="AC" Background="Red" FontSize="Large" Clicked="OnClearClicked" Grid.Row="2" Grid.Column="1"/>
+            <Button Text="DEL" Background="Red" FontSize="Large" Clicked="OnDeleteClicked" Grid.Row="2" Grid.Column="2"/>
+            <Button Text="/" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="3"/>
+            <Button Text="sin" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="4"/>
 
-            <Button Text="7" Background="SkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="3" Grid.Column="0"/>
-            <Button Text="8" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="3" Grid.Column="1"/>
-            <Button Text="9" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="3" Grid.Column="2"/>
-            <Button Text="*" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="3" Grid.Column="3"/>
-            <Button Text="cos" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="3" Grid.Column="4"/>
+            <Button Text="7" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="0"/>
+            <Button Text="8" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="1"/>
+            <Button Text="9" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="2"/>
+            <Button Text="*" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="3"/>
+            <Button Text="cos" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="4"/>
 
-            <Button Text="4" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="4" Grid.Column="0"/>
-            <Button Text="5" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="4" Grid.Column="1"/>
-            <Button Text="6" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="4" Grid.Column="2"/>
-            <Button Text="-" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="4" Grid.Column="3"/>
-            <Button Text="tan" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="4" Grid.Column="4"/>
+            <Button Text="4" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="0"/>
+            <Button Text="5" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="1"/>
+            <Button Text="6" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="2"/>
+            <Button Text="-" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="3"/>
+            <Button Text="tan" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="4"/>
 
-            <Button Text="1" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="5" Grid.Column="0"/>
-            <Button Text="2" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="5" Grid.Column="1"/>
-            <Button Text="3" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="5" Grid.Column="2"/>
-            <Button Text="+" Background="Purple" FontSize="Large" Clicked="OnOperatorClicked" CornerRadius="0" Grid.Row="5" Grid.Column="3"/>
-            <Button Text="π" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="5" Grid.Column="4"/>
+            <Button Text="1" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="0"/>
+            <Button Text="2" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="1"/>
+            <Button Text="3" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="2"/>
+            <Button Text="+" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="5" Grid.Column="3"/>
+            <Button Text="π" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="4"/>
 
-            <Button Text="0" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <Button Text="." Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="6" Grid.Column="2"/>
-            <Button Text="=" Background="Purple" FontSize="Large" Clicked="OnEqualClicked" CornerRadius="0" Grid.Row="6" Grid.Column="3"/>
-            <Button Text="e" Background="LightSkyBlue" FontSize="Large" Clicked="OnNumberClicked" CornerRadius="0" Grid.Row="6" Grid.Column="4"/>
+            <Button Text="0" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Text="." Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="2"/>
+            <Button Text="=" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnEqualClicked" Grid.Row="6" Grid.Column="3"/>
+            <Button Text="e" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="4"/>
 
         </Grid>
     </Grid>
