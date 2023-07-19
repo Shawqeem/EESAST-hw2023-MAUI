@@ -54,11 +54,13 @@ public partial class MainPage : ContentPage
             if (isResult || displayLabel.Text == "0")
             {
                 currentNumber = (number == "π" ? Math.PI : Math.E);
+                currentNumber = Math.Round(currentNumber, 4);
                 displayLabel.Text = currentNumber.ToString();
             }
             else
             {
                 currentNumber *= (number == "π" ? Math.PI : Math.E);
+                currentNumber = Math.Round(currentNumber, 4);
                 displayLabel.Text = currentNumber.ToString();
             }
         }
@@ -135,7 +137,7 @@ public partial class MainPage : ContentPage
             default:
                 break;
         }
-
+        currentNumber = Math.Round(currentNumber, 4);
         displayLabel.Text = currentNumber.ToString();
         lastButton = ButtonType.UNARY;
     }
@@ -224,6 +226,9 @@ public partial class MainPage : ContentPage
             case "/":
                 lastNumber /= currentNumber;
                 break;
+            case "^":
+                lastNumber = Math.Pow(lastNumber, currentNumber);
+                break;//一不小心删多啦？
             default:
                 break;
         }
