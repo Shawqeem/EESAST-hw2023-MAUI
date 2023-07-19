@@ -4,52 +4,127 @@
              x:Class="calculator.MainPage"
              Title="Calculator">
 
-    <!-- 使用Grid作为根布局 -->
-    <Grid RowSpacing="6" ColumnSpacing="6" Margin="20">
+    <Grid>
+
+      <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="100"
+                Margin="15"
+                HorizontalOptions="Start" 
+                VerticalOptions="Start"/>
+
+        <!-- 使用Grid作为根布局 -->
+        <Grid x:Name="standard" RowSpacing="8" ColumnSpacing="8" Margin="8">
         
-        <!-- 设置六行四列的网格 -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+            <!-- 设置六行四列的网格 -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
         
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
         
-        <!-- 使用Label显示计算结果，并占据第一行四列 -->
-        <Label x:Name="displayLabel" Text="0" FontSize="Large" HorizontalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="4" />
+            <!-- 使用Label显示计算结果，并占据第一行四列 -->
+            <Label x:Name="displayLabel" Text="0" FontSize="Large" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="4" />
 
-        <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
-        <Button Text="AC" Background="LightSkyBlue" Clicked="OnClearClicked" Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="3"/>
-        <Button Text="/" Background="LightSkyBlue" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="3"/>
+            <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
+            <Button Text="⇌" Background="{AppThemeBinding Light=Indigo, Dark=Orange}" FontSize="Large" Clicked="OnSwitchClicked" Grid.Row="1" Grid.Column="0"/>
+            <Button Text="AC" Background="Red" FontSize="Large" Clicked="OnClearClicked" Grid.Row="1" Grid.Column="1"/>
+            <Button Text="DEL" Background="Red" FontSize="Large" Clicked="OnDeleteClicked" Grid.Row="1" Grid.Column="2"/>
+            <Button Text="/" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="3"/>
 
-        <Button Text="7" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="0"/>
-        <Button Text="8" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="1"/>
-        <Button Text="9" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="2"/>
-        <Button Text="*" Background="LightSkyBlue" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="3"/>
+            <Button Text="7" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="0"/>
+            <Button Text="8" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="1"/>
+            <Button Text="9" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="2" Grid.Column="2"/>
+            <Button Text="*" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="3"/>
 
-        <Button Text="4" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="0"/>
-        <Button Text="5" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="1"/>
-        <Button Text="6" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="2"/>
-        <Button Text="-" Background="LightSkyBlue" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="3"/>
+            <Button Text="4" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="0"/>
+            <Button Text="5" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="1"/>
+            <Button Text="6" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="2"/>
+            <Button Text="-" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="3"/>
 
-        <Button Text="1" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="0"/>
-        <Button Text="2" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="1"/>
-        <Button Text="3" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="2"/>
-        <Button Text="+" Background="LightSkyBlue" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="3"/>
+            <Button Text="1" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="0"/>
+            <Button Text="2" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="1"/>
+            <Button Text="3" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="2"/>
+            <Button Text="+" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="3"/>
 
-        <Button Text="0" Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
-        <Button Text="." Background="LightSkyBlue" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="2"/>
-        <Button Text="=" Background="LightSkyBlue" Clicked="OnEqualClicked" Grid.Row="5" Grid.Column="3"/>
+            <Button Text="0" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Text="." Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="2"/>
+            <Button Text="=" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnEqualClicked" Grid.Row="5" Grid.Column="3"/>
 
+        </Grid>
+
+        <!-- 使用Grid作为根布局 -->
+        <Grid x:Name="scientific" RowSpacing="4" ColumnSpacing="4" Margin="8" IsVisible="false">
+
+            <!-- 设置七行五列的网格 -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3.5*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- 使用Label显示计算结果，并占据第一行五列 -->
+            <Label x:Name="displayLabel_sci" FontSize="Large" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="5" BindingContext="{x:Reference displayLabel}" Text="{Binding Text}"/>
+
+            <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
+            <Button Text="^" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="1" Grid.Column="0"/>
+            <Button Text="lg" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="1" Grid.Column="1"/>
+            <Button Text="ln" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="1" Grid.Column="2"/>
+            <Button Text="√" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="1" Grid.Column="3"/>
+            <Button Text="!" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="1" Grid.Column="4"/>
+
+            <Button Text="⇌" Background="{AppThemeBinding Light=Indigo, Dark=Orange}" FontSize="Large" Clicked="OnSwitchClicked" Grid.Row="2" Grid.Column="0"/>
+            <Button Text="AC" Background="Red" FontSize="Large" Clicked="OnClearClicked" Grid.Row="2" Grid.Column="1"/>
+            <Button Text="DEL" Background="Red" FontSize="Large" Clicked="OnDeleteClicked" Grid.Row="2" Grid.Column="2"/>
+            <Button Text="/" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="3"/>
+            <Button Text="sin" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="2" Grid.Column="4"/>
+
+            <Button Text="7" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="0"/>
+            <Button Text="8" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="1"/>
+            <Button Text="9" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="2"/>
+            <Button Text="*" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="3"/>
+            <Button Text="cos" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="3" Grid.Column="4"/>
+
+            <Button Text="4" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="0"/>
+            <Button Text="5" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="1"/>
+            <Button Text="6" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="2"/>
+            <Button Text="-" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="3"/>
+            <Button Text="tan" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnUnaryClicked" Grid.Row="4" Grid.Column="4"/>
+
+            <Button Text="1" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="0"/>
+            <Button Text="2" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="1"/>
+            <Button Text="3" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="2"/>
+            <Button Text="+" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnOperatorClicked" Grid.Row="5" Grid.Column="3"/>
+            <Button Text="π" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="4"/>
+
+            <Button Text="0" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Text="." Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="2"/>
+            <Button Text="=" Background="{AppThemeBinding Light=Purple, Dark=DarkGray}" FontSize="Large" Clicked="OnEqualClicked" Grid.Row="6" Grid.Column="3"/>
+            <Button Text="e" Background="Gray" FontSize="Large" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="4"/>
+
+        </Grid>
     </Grid>
-
 </ContentPage>
