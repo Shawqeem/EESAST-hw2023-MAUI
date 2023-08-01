@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="calculator.SecondPage"
+             xmlns:local="clr-namespace:calculator"
+             Title="SecondPage">
+    <ContentPage.BindingContext>
+        <local:MainPage/>
+    </ContentPage.BindingContext>
+
+    <!-- 使用Grid作为根布局 -->
+    <Grid RowSpacing="5" ColumnSpacing="6" Margin="20">
+        
+        <!-- 设置六行四列的网格 -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+
+    <!-- 使用Label显示计算结果，并占据第一行四列 -->
+        <Label x:Name="displayLabel" Text="" FontSize="25" LineBreakMode="WordWrap"  HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" />
+
+    <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
+    <Button Text="AC" FontSize="40" Background="LightSkyBlue" Clicked="OnClearClicked" Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="2"/>
+    
+    <Button Text="del" FontSize="40" Background="LightSkyBlue" Clicked="OnDelClicked" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
+
+    <Button Text="!" FontSize="40" Background="LightSkyBlue" Clicked="OnOneOperatorClicked" Grid.Row="2" Grid.Column="0"/>
+        <Button Text="lg" FontSize="40" Background="LightSkyBlue" Clicked="OnOneOperatorClicked" Grid.Row="2" Grid.Column="1"/>
+    <Button Text="ln" FontSize="40" Background="LightSkyBlue" Clicked="OnOneOperatorClicked" Grid.Row="2" Grid.Column="2"/>
+    <Button Text="pi" FontSize="40" Background="LightSkyBlue" Clicked="OnConstantClicked" Grid.Row="2" Grid.Column="3"/>
+
+    <Button Text="sin" FontSize="40" Background="LightSkyBlue" Clicked="OnOneOperatorClicked" Grid.Row="3" Grid.Column="0"/>
+       <Button Text="cos" FontSize="40" Background="LightSkyBlue" Clicked="OnOneOperatorClicked" Grid.Row="3" Grid.Column="1"/>
+       <Button Text="tan" FontSize="40" Background="LightSkyBlue" Clicked="OnOneOperatorClicked" Grid.Row="3" Grid.Column="2"/>
+
+
+       <Button Text="√" FontSize="40" Background="LightSkyBlue" Clicked="OnOneOperatorClicked" Grid.Row="4" Grid.Column="0"/>
+        <Button Text="x^y" FontSize="40" Background="LightSkyBlue" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="1"/>
+    <Button Text="e" FontSize="40" Background="LightSkyBlue" Clicked="OnConstantClicked" Grid.Row="4" Grid.Column="2"/>
+    <Button Text="=" FontSize="40" Background="LightSkyBlue" Clicked="OnEqualClicked" Grid.Row="3" Grid.Column="3" Grid.RowSpan="2"/>
+
+        <Button Text="回到第一页" FontSize="30" Background="lightpink" Clicked="OnReturnClicked" Grid.Row="0" Grid.Column="0"/>
+
+    </Grid>
+
+</ContentPage>

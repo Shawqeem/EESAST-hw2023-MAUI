@@ -5,10 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:calculator"
     Shell.FlyoutBehavior="Disabled">
-
+    <!-- TabBar-->
     <ShellContent
-        Title="Home"
+        Title="MainPage"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    
+    
+    <!--/TabBar-->
 
 </Shell>
