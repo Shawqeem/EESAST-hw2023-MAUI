@@ -1,78 +1,18 @@
-﻿using System;
+using System;
 using appdata;
-using calculator_plus;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace calculator;
+namespace calculator_plus;
 
-public partial class MainPage : ContentPage
+public partial class NewPage : ContentPage
 {
-    // 使用构造函数来初始化页面
-    public MainPage()
+   
+    public NewPage(string text)
     {
         // 调用InitializeComponent方法来加载XAML文件中定义的控件
         InitializeComponent();
-
-        AppData.Instance.TextUpdated += AppData_TextUpdated;
+        displayLabel.Text = text;
     }
-
-
-
-    // 定义OnNumberClicked方法来处理数字按钮点击事件
-    private void OnNumberClicked(object sender, EventArgs e)
-    {
-        // 获取按钮的文本值
-        var button = sender as Button;
-        var number = button.Text;
-        AppData.Instance.iscurrentNumber = true;
-    
-        // 如果当前显示的是结果，或者是0，就清空显示屏
-        if (AppData.Instance.isResult || displayLabel.Text == "0")
-        {
-            displayLabel.Text = "";
-            if (number == ".")
-                displayLabel.Text = "0";
-            AppData.Instance.isResult = false;
-        }
-
-        //输入..会崩溃
-        if (!(number == "." && displayLabel.Text.Contains(".")))
-        {
-            // 将数字追加到显示屏，并更新当前输入的数字
-            displayLabel.Text += number;
-        }
-        AppData.Instance.currentNumber = double.Parse(displayLabel.Text);
-    }
-
-    // 定义OnOperatorClicked方法来处理运算符按钮点击事件
-    private void OnOperatorClicked(object sender, EventArgs e)
-    {
-        // 获取按钮的文本值
-        var button = sender as Button;
-        var op = button.Text;
-
-        AppData.Instance.lastNumber = AppData.Instance.currentNumber;
-        displayLabel.Text = "0";
-        AppData.Instance.isResult = false;
-        AppData.Instance.iscurrentNumber = false;
-
-        // 将当前选择的运算符赋值给变量，并清空当前输入的数字
-        AppData.Instance.currentOperator = op;
-    }
-
-    // 定义OnEqualClicked方法来处理等号按钮点击事件
-    private void OnEqualClicked(object sender, EventArgs e)
-    {
-        // 如果当前选择的运算符不为空，就执行上一次选择的运算，并显示结果
-        if (AppData.Instance.currentOperator != "")
-        {
-            Calculate();
-            displayLabel.Text = AppData.Instance.lastNumber.ToString();
-            AppData.Instance.isResult = true;
-            AppData.Instance.currentOperator = "";
-        }
-    }
-
     // 定义OnClearClicked方法来处理AC按钮点击事件
     private void OnClearClicked(object sender, EventArgs e)
     {
@@ -82,9 +22,9 @@ public partial class MainPage : ContentPage
         AppData.Instance.isResult = false;
         AppData.Instance.iscurrentNumber = false;
         displayLabel.Text = AppData.Instance.lastNumber.ToString();
+        AppData.Instance.RaiseTextUpdated(displayLabel.Text);
     }
 
-    //定义OnDELClicked方法来处理DEL按钮点击事件
     private void OnDELClicked(object sender, EventArgs e)
     {
         if (!AppData.Instance.isResult)
@@ -101,7 +41,7 @@ public partial class MainPage : ContentPage
                 if (text.Length > 1)
                 {
                     double tempCurrentNumber;
-                    double.TryParse(text.Substring(0, text.Length - 1),out tempCurrentNumber);
+                    double.TryParse(text.Substring(0, text.Length - 1), out tempCurrentNumber);
                     AppData.Instance.currentNumber = tempCurrentNumber;
                     displayLabel.Text = AppData.Instance.currentNumber.ToString();
                     if (text[text.Length - 2] == '.')
@@ -124,23 +64,77 @@ public partial class MainPage : ContentPage
         {
             displayLabel.Text = "";
         }
+        AppData.Instance.RaiseTextUpdated(displayLabel.Text);
     }
 
-    //定义OnXClicked方法来处理X按钮点击事件
-    private void OnXClicked(object sender, EventArgs e)
+    private void OnOperatorClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new NewPage(displayLabel.Text));
-        
+        // 获取按钮的文本值
+        var button = sender as Button;
+        var op = button.Text;
+
+        AppData.Instance.lastNumber = AppData.Instance.currentNumber;
+        displayLabel.Text = "0";
+        AppData.Instance.isResult = false;
+        AppData.Instance.iscurrentNumber = false;
+
+        // 将当前选择的运算符赋值给变量，并清空当前输入的数字
+        AppData.Instance.currentOperator = op;
+        AppData.Instance.RaiseTextUpdated(displayLabel.Text);
     }
 
-    private void AppData_TextUpdated(object sender, string newText)
+    // 定义OnNumberClicked方法来处理数字按钮点击事件
+    private void OnNumberClicked(object sender, EventArgs e)
     {
-        // 在事件处理程序中更新文本框内容
-        displayLabel.Text = newText;
+        // 获取按钮的文本值
+        var button = sender as Button;
+        var number = button.Text;
+        AppData.Instance.iscurrentNumber = true;
+
+        // 如果当前显示的是结果，或者是0，就清空显示屏
+        if (AppData.Instance.isResult || displayLabel.Text == "0")
+        {
+            displayLabel.Text = "";
+            if (number == ".")
+                displayLabel.Text = "0";
+            AppData.Instance.isResult = false;
+        }
+
+       //输入..会崩溃，输入.e,.pi,epi...也会崩溃哦
+        if (number == "pi" || number == "e")
+        {
+            displayLabel.Text = number;
+        }
+        else if (!(number == "." && displayLabel.Text.Contains(".")))
+        {
+            // 将数字追加到显示屏，并更新当前输入的数字
+            displayLabel.Text += number;
+        }
+        if (displayLabel.Text.Contains("pi"))
+        {
+            // 将 "pi" 替换为 Math.PI 的字符串表示，并解析为 double
+            displayLabel.Text = displayLabel.Text.Replace("pi", Math.PI.ToString());
+        }
+        if (displayLabel.Text.Contains("e"))
+        {
+            // 将 "e" 替换为 Math.E 的字符串表示，并解析为 double
+            displayLabel.Text = displayLabel.Text.Replace("e", Math.E.ToString());
+        }
+        AppData.Instance.currentNumber = double.Parse(displayLabel.Text);
+        AppData.Instance.RaiseTextUpdated(displayLabel.Text);
     }
-
-
-    // 定义Calculate方法来执行运算逻辑
+    private void OnEqualClicked(object sender, EventArgs e)
+    {
+        // 如果当前选择的运算符不为空，就执行上一次选择的运算，并显示结果
+        if (AppData.Instance.currentOperator != "")
+        {
+            Calculate();
+            displayLabel.Text = AppData.Instance.lastNumber.ToString();
+            AppData.Instance.isResult = true;
+            AppData.Instance.currentOperator = "";
+        }
+        AppData.Instance.RaiseTextUpdated(displayLabel.Text);
+    }
     private void Calculate()
     {
         // 根据当前选择的运算符，对上一次计算的结果和当前输入的数字进行相应的运算，并更新上一次计算的结果
@@ -198,5 +192,3 @@ public partial class MainPage : ContentPage
         AppData.Instance.currentNumber = AppData.Instance.lastNumber;
     }
 }
-
-
