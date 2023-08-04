@@ -100,8 +100,12 @@ public partial class NewPage : ContentPage
             AppData.Instance.isResult = false;
         }
 
-        //输入..会崩溃
-        if (!(number == "." && displayLabel.Text.Contains(".")))
+       //输入..会崩溃，输入.e,.pi,epi...也会崩溃哦
+        if (number == "pi" || number == "e")
+        {
+            displayLabel.Text = number;
+        }
+        else if (!(number == "." && displayLabel.Text.Contains(".")))
         {
             // 将数字追加到显示屏，并更新当前输入的数字
             displayLabel.Text += number;
