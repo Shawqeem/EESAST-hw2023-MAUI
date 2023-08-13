@@ -5,10 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:calculator"
     Shell.FlyoutBehavior="Disabled">
-
-    <ShellContent
+    <TabBar>
+        <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <ShellContent
+        Title="ComplexCalculate"
+        ContentTemplate="{DataTemplate local:Page2}"
+        Route="Page2" />
+    </TabBar>
 
 </Shell>
