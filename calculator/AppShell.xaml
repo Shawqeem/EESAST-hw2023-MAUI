@@ -6,9 +6,11 @@
     xmlns:local="clr-namespace:calculator"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
+        <ShellContent
+        Title="Simple"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+        
 
 </Shell>
