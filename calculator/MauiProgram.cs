@@ -1,5 +1,7 @@
 ﻿namespace calculator;
 
+using System;
+
 public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
